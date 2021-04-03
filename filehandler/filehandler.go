@@ -7,7 +7,7 @@ import (
 	"os"
 	"strings"
 
-	common "github.com/catbuttes/word-combinator/Common"
+	"github.com/catbuttes/word-combinator/common"
 )
 
 func RunFileHandler(inFile string, outFile string) {
