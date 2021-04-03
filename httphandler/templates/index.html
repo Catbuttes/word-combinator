@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Word Combinator
+    </title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0px;
+        }
+        .page-header {
+            height: 100px;
+            width: 100%;
+            display: block;
+            background-color: #000000;
+            color:#FFFFFF;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .page-header h1 {
+            width: 75%;
+            margin:auto;
+            text-align: center;
+            font-size: 500%;
+        }
+        form {
+            width: 75%;
+            margin:auto;
+        }
+        label {
+            display: block;
+        }
+        button {
+            display: block;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 120px;
+            margin:auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class=page-header>
+        <h1>
+            Word Combinator
+        </h1>
+    </div>
+    <br/>
+    <form method="POST">
+        <label for="inputA">First list of words</label>
+        <textarea name="A" id="inputA">{{.ListA}}</textarea>
+        <br />
+        <label for="inputB">Second list of words</label>
+        <textarea name="B" id="inputB">{{.ListB}}</textarea>
+        <button type="submit">Combine</button>
+        <br />
+        <label for="inputB">Combined Output</label>
+        <textarea id="output">{{.Output}}</textarea>
+    </form>
+
+</body>
+
+</html>
