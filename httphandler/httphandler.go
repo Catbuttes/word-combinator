@@ -26,6 +26,7 @@ type UiModel struct {
 func RunHttpHandler(port string, inFile string, outFile string) {
 	http.HandleFunc("/", Page)
 	fmt.Printf("Listening on http://%s\n", port)
+	fmt.Printf("Use Ctrl+C to quit\n")
 	http.ListenAndServe(port, nil)
 }
 
