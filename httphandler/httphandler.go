@@ -9,6 +9,7 @@ import (
 	"text/template"
 
 	"github.com/catbuttes/word-combinator/common"
+	"github.com/pkg/browser"
 )
 
 // Embed the entire directory.
@@ -23,11 +24,12 @@ type UiModel struct {
 	Output string
 }
 
-func RunHttpHandler(port string, inFile string, outFile string) {
+func RunHttpHandler(addr string, inFile string, outFile string) {
 	http.HandleFunc("/", Page)
-	fmt.Printf("Listening on http://%s\n", port)
+	fmt.Printf("Listening on http://%s\n", addr)
 	fmt.Printf("Use Ctrl+C to quit\n")
-	http.ListenAndServe(port, nil)
+	go browser.OpenURL("http://" + addr)
+	http.ListenAndServe(addr, nil)
 }
 
 func Page(w http.ResponseWriter, req *http.Request) {
