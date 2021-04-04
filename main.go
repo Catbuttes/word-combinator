@@ -15,7 +15,7 @@ func usage() {
 
 func main() {
 	flag.Usage = usage
-	notHttp := flag.Bool("notHttp", false, "Run a web server")
+	notHttp := flag.Bool("notHttp", false, "Don't run a web server")
 	port := flag.String("address", "127.0.0.1:3000", "The address for the server to listen on")
 	inFile := flag.String("inFile", "./words.txt", "The input file with the words in it")
 	outFile := flag.String("outFile", "./outwords.txt", "The output file the words get written to")
