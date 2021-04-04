@@ -15,7 +15,7 @@ func RunFileHandler(inFile string, outFile string) {
 	outWords := common.JoinWords(words)
 
 	if inFile == outFile {
-		outWords = "\n#" + outWords
+		outWords = "\n#\n" + outWords
 	}
 
 	writeOutput(outWords, outFile)
