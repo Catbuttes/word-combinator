@@ -94,6 +94,11 @@ func processInput(inputA string, inputB string, split string) common.InputWordLi
 		wordsB = strings.Split(inputB, split)
 	}
 
+	if len(wordsB) == 1 {
+		wordsB = wordsA
+
+	}
+
 	contents.ListA = append(contents.ListA, wordsA...)
 	contents.ListB = append(contents.ListB, wordsB...)
 
