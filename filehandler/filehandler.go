@@ -12,7 +12,7 @@ import (
 
 func RunFileHandler(inFile string, outFile string) {
 	words := loadWordFile(inFile)
-	outWords := common.JoinWords(words)
+	outWords := common.JoinWords(words, "")
 
 	if inFile == outFile {
 		outWords = "\n#\n" + outWords

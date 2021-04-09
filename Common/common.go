@@ -9,12 +9,12 @@ type InputWordLists struct {
 	ListB []string
 }
 
-func JoinWords(words InputWordLists) string {
+func JoinWords(words InputWordLists, concat string) string {
 	outWords := make([]string, 0)
 
 	for _, wordA := range words.ListA {
 		for _, wordB := range words.ListB {
-			outWords = append(outWords, wordA+" "+wordB)
+			outWords = append(outWords, wordA+concat+wordB)
 		}
 	}
 

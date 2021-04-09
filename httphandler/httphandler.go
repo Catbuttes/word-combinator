@@ -65,25 +65,34 @@ func postPage(w http.ResponseWriter, req *http.Request) {
 	req.ParseForm()
 	defer req.Body.Close()
 
-	words := processInput(req.Form.Get("A"), req.Form.Get("B"))
+	words := processInput(req.Form.Get("A"), req.Form.Get("B"), req.Form.Get("splitOn"))
+	concat := req.Form.Get("concat")
 
 	uiData := UiModel{
 		ListA:  req.Form.Get("A"),
 		ListB:  req.Form.Get("B"),
-		Output: common.JoinWords(words),
+		Output: common.JoinWords(words, concat),
 	}
 
 	indexTemplate.Execute(w, uiData)
 }
 
-func processInput(inputA string, inputB string) common.InputWordLists {
+func processInput(inputA string, inputB string, split string) common.InputWordLists {
 	contents := common.InputWordLists{
 		ListA: make([]string, 0),
 		ListB: make([]string, 0),
 	}
 
-	wordsA := strings.Split(strings.ReplaceAll(inputA, "\r\n", "\n"), "\n")
-	wordsB := strings.Split(strings.ReplaceAll(inputB, "\r\n", "\n"), "\n")
+	var wordsA []string
+	var wordsB []string
+
+	if split == "newline" {
+		wordsA = strings.Split(strings.ReplaceAll(inputA, "\r\n", "\n"), "\n")
+		wordsB = strings.Split(strings.ReplaceAll(inputB, "\r\n", "\n"), "\n")
+	} else {
+		wordsA = strings.Split(inputA, split)
+		wordsB = strings.Split(inputB, split)
+	}
 
 	contents.ListA = append(contents.ListA, wordsA...)
 	contents.ListB = append(contents.ListB, wordsB...)

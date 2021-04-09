@@ -31,7 +31,8 @@
             margin:auto;
         }
         label {
-            display: block;
+            display: inline-block;
+            vertical-align: bottom;
         }
         button {
             display: block;
@@ -58,6 +59,18 @@
         <br />
         <label for="inputB">Second list of words</label>
         <textarea name="B" id="inputB">{{.ListB}}</textarea>
+
+        <input type="radio" id="newlineSplit" name="splitOn" value="newline" checked/>
+        <label for="newlineSplit">Split on new line</label>
+        <br />
+        <input type="radio" id="newlineSplit" name="splitOn" value=" " />
+        <label for="newlineSplit">Split on space</label>
+        <br />
+        <input type="radio" id="newlineSplit" name="splitOn" value="," />
+        <label for="newlineSplit">Split on comma</label>
+        <br />
+        <label for="concat">Concatenation Character</label>
+        <input type="text" name="concat" id="concat" />
         <button type="submit">Combine</button>
         <br />
         <label for="inputB">Combined Output</label>
